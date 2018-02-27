@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "923041717183",
+    "firebase_url": "https://empleados-fbc0a.firebaseio.com",
+    "project_id": "empleados-fbc0a",
+    "storage_bucket": "empleados-fbc0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923041717183:android:0d13f655ef62414e",
+        "android_client_info": {
+          "package_name": "com.example.didact.empleadosfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923041717183-rjchb8u7t12hhpvc7qf3ubts3e5u3liu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.didact.empleadosfirebase",
+            "certificate_hash": "46afcb6f5bdd4bee56dd00d772cb446370d04bc0"
+          }
+        },
+        {
+          "client_id": "923041717183-305dl6he0a31kdkam2s0k5m7i6ihqoct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvocLAVxHvjqA27kwvpCHz3aElhd9N-qQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923041717183-305dl6he0a31kdkam2s0k5m7i6ihqoct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
