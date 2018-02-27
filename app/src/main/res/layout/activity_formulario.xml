@@ -32,16 +32,18 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnInsetar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="insertar"
-        android:text="Button" />
+        android:enabled="false"
+        android:text="Insertar" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="modificar"
-        android:text="Button" />
+        android:enabled="false"
+        android:text="Modificar" />
 </LinearLayout>

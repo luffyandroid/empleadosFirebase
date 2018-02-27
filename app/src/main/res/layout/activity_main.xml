@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:onClick="nuevoEmpleado"
-            android:text="Button" />
+            android:text="Nuevo empleado" />
     </RelativeLayout>
 
 </LinearLayout>

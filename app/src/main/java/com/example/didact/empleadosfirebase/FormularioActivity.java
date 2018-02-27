@@ -3,12 +3,14 @@ package com.example.didact.empleadosfirebase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class FormularioActivity extends AppCompatActivity {
 
     EditText etDNI, etNombre, etEmpleo;
+    Button btnInsertar, btnModificar;
 
 
     @Override
@@ -19,6 +21,8 @@ public class FormularioActivity extends AppCompatActivity {
         etDNI = (EditText)findViewById(R.id.etDNI);
         etNombre = (EditText)findViewById(R.id.etNombre);
         etEmpleo = (EditText)findViewById(R.id.etEmpleo);
+        btnInsertar = (Button)findViewById(R.id.btnInsetar);
+        btnModificar = (Button)findViewById(R.id.btnModificar);
 
         Bundle b= getIntent().getExtras();
 
@@ -28,7 +32,9 @@ public class FormularioActivity extends AppCompatActivity {
             etDNI.setText(e.getDni());
             etNombre.setText(e.getNombre());
             etEmpleo.setText(e.getEmpleo());
-
+            btnModificar.setEnabled(true);
+        }else{
+            btnInsertar.setEnabled(true);
         }
     }
 
