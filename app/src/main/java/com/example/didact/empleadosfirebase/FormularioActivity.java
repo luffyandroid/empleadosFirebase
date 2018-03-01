@@ -7,10 +7,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class FormularioActivity extends AppCompatActivity {
 
     EditText etDNI, etNombre, etEmpleo;
     Button btnInsertar, btnModificar;
+
+    DatabaseReference dbRef;
+    ValueEventListener valueEventListener;
 
 
     @Override
@@ -33,6 +41,7 @@ public class FormularioActivity extends AppCompatActivity {
             etNombre.setText(e.getNombre());
             etEmpleo.setText(e.getEmpleo());
             btnModificar.setEnabled(true);
+            etDNI.setEnabled(false);
         }else{
             btnInsertar.setEnabled(true);
         }
@@ -40,27 +49,68 @@ public class FormularioActivity extends AppCompatActivity {
 
     public void insertar(View view){
 
-        String DNI = etDNI.getText().toString();
+        String dni = etDNI.getText().toString();
         String nombre = etNombre.getText().toString();
         String empleo = etEmpleo.getText().toString();
 
-        if (DNI.equals("") || nombre.equals("") || empleo.equals("")){
+        if (dni.equals("") || nombre.equals("") || empleo.equals("")){
             Toast.makeText(getApplicationContext(), "Debes rellenar los campos",Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(getApplicationContext(), "Se pasan los datos a la base de datos",Toast.LENGTH_LONG).show();
+            CEmpleado nuevoEmpleado=new CEmpleado(dni, nombre, empleo);
+            dbRef = FirebaseDatabase.getInstance().getReference().child("empleados");
+
+            dbRef.child(dni).setValue(nuevoEmpleado, new DatabaseReference.CompletionListener() {
+                @Override
+                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                    if (databaseError == null){
+
+                        Toast.makeText(getApplicationContext(),"Insertado correctamente",Toast.LENGTH_LONG).show();
+                        limpiarFormulario();
+
+                    }else{
+
+                        Toast.makeText(getApplicationContext(),"No se puede insertar el jugador",Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            });
         }
     }
 
     public void modificar(View view){
-        String DNI = etDNI.getText().toString();
+        String dni = etDNI.getText().toString();
         String nombre = etNombre.getText().toString();
         String empleo = etEmpleo.getText().toString();
 
-        if (DNI.equals("") || nombre.equals("") || empleo.equals("")){
+
+        if (dni.equals("") || nombre.equals("") || empleo.equals("")){
             Toast.makeText(getApplicationContext(), "Debes rellenar los campos",Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(getApplicationContext(), "Se modifican los datos de la base de datos",Toast.LENGTH_LONG).show();
+            CEmpleado nuevoEmpleado=new CEmpleado(dni, nombre, empleo);
+            dbRef = FirebaseDatabase.getInstance().getReference().child("empleados");
+
+            dbRef.child(dni).setValue(nuevoEmpleado, new DatabaseReference.CompletionListener() {
+                @Override
+                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                    if (databaseError == null){
+
+                        Toast.makeText(getApplicationContext(),"Modificado correctamente",Toast.LENGTH_LONG).show();
+                        limpiarFormulario();
+
+                    }else{
+
+                        Toast.makeText(getApplicationContext(),"No se puede insertar el jugador",Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            });
         }
+    }
+
+    private void limpiarFormulario(){
+        etNombre.setText("");
+        etDNI.setText("");
+        etEmpleo.setText("");
     }
 
 }
